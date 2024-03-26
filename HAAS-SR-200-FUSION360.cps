@@ -2,7 +2,7 @@
   Copyright (C) 2024 SafetyDav3 Automation.
   All rights reserved.
 
-  HAAS post processor for SR-200 3Axis milling machine.
+  HAAS post processor for SR-200 3 Axis milling machine.
 
   $Revision: 20240325 $
   $Date: 2024-25-24 $
