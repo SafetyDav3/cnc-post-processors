@@ -152,7 +152,7 @@ properties = {
     description: "Specifies that G0s should be used for rapid moves when moving along a single axis.",
     group      : "preferences",
     type       : "boolean",
-    value      : false,
+    value      : true,
     scope      : "post"
   },
   safePositionMethod: {
