@@ -244,14 +244,6 @@ properties = {
     value      : false,
     scope      : "post"
   },
-  fastToolChange: {
-    title      : "Fast tool change",
-    description: "Skip spindle off, coolant off, and Z retract to make tool change quicker.",
-    group      : "preferences",
-    type       : "boolean",
-    value      : false,
-    scope      : "post"
-  },
   useG95forTapping: {
     title      : "Use G95 for tapping",
     description: "use IPR/MPR instead of IPM/MPM for tapping",
