@@ -4,7 +4,7 @@
 
   HAAS post processor for SR-200 3 Axis milling machine.
 
-  $Revision: 6 $
+  $Revision: 7 $
   $Date: 03-29-2024 $
 
 */
@@ -68,6 +68,14 @@ properties = {
     group      : "preferences",
     type       : "boolean",
     value      : true,
+    scope      : "post"
+  },
+  safetyDav3: {
+    title      : "Enable SafetyDav3 Mode",
+    description: "Enable SafetyDav3 Mode for the post processor. This will enable additional features and optimizations beyond you wildest dreams.",
+    group      : "preferences",
+    type       : "boolean",
+    value      : false,
     scope      : "post"
   },
   gotChipConveyor: {
