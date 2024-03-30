@@ -133,7 +133,7 @@ properties = {
   },
   useRadius: {
     title      : "Radius arcs",
-    description: "If yes is selected, arcs are output using radius values rather than IJK. Haas uses IJK for arcs.",
+    description: "If yes is selected, arcs are output using radius values rather than IJK. Haas uses IJK for arcs by default.",
     group      : "preferences",
     type       : "boolean",
     value      : false,
