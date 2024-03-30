@@ -303,7 +303,7 @@ properties = {
   },
   programmableCoolant: {
     title      : "Programmable coolant",
-    description: "Enable if the machine has the programmable coolant option and requires the coolant to be enabled after tool length compensation is enabled.",
+    description: "Enable if the machine has the programmable coolant option and requires the coolant to be enabled after tool length compensation is enabled. Haas SR-200 does not support programmable coolant, but does have Air Assist.",
     group      : "preferences",
     type       : "boolean",
     value      : false,
