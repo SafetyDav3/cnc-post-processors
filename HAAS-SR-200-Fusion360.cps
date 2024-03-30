@@ -279,7 +279,7 @@ properties = {
   },
   singleResultsFile: {
     title      : "Create single results file",
-    description: "Set to false if you want to store the measurement results for each probe / inspection toolpath in a separate file",
+    description: "Set to false if you want to store the measurement results for each probe / inspection tool-path in a separate file",
     group      : "probing",
     type       : "boolean",
     value      : true,
@@ -287,7 +287,7 @@ properties = {
   },
   useClampCodes: {
     title      : "Use clamp codes",
-    description: "Specifies whether clamp codes for rotary axes should be output. For simultaneous toolpaths rotary axes will always get unclamped.",
+    description: "Specifies whether clamp codes for rotary axes should be output. For simultaneous tool-paths rotary axes will always get unclamped.",
     group      : "multiAxis",
     type       : "boolean",
     value      : true,
@@ -311,7 +311,7 @@ properties = {
   }
 };
 
-// wcs definiton
+// wcs definition
 wcsDefinitions = {
   useZeroOffset: false,
   wcs          : [
@@ -428,7 +428,7 @@ var forceCoolant = false;
 var activeMovements; // do not use by default
 var currentFeedId;
 var maximumCircularRadiiDifference = toPreciseUnit(0.005, MM);
-var maximumLineLength = 80; // the maximum number of charaters allowed in a line
+var maximumLineLength = 80; // the maximum number of characters allowed in a line
 var subprograms = [];
 var currentPattern = -1;
 var firstPattern = false;
@@ -719,13 +719,13 @@ function defineMachine() {
 
     setMachineConfiguration(machineConfiguration);
     if (receivedMachineConfiguration) {
-      warning(localize("The provided CAM machine configuration is overwritten by the postprocessor."));
+      warning(localize("The provided CAM machine configuration is overwritten by the post-processor."));
       receivedMachineConfiguration = false; // CAM provided machine configuration is overwritten
     }
   }
 
   if (!receivedMachineConfiguration) {
-    // multiaxis settings
+    // multi-axis settings
     if (machineConfiguration.isHeadConfiguration()) {
       machineConfiguration.setVirtualTooltip(false); // translate the pivot point to the virtual tool tip for nonTCP rotary heads
     }
@@ -744,7 +744,7 @@ function defineMachine() {
       machineConfiguration.setRewindStockExpansion(stockExpansion);
     }
 
-    // multi-axis feedrates
+    // multi-axis feed-rates
     if (machineConfiguration.isMultiAxisConfiguration()) {
       var useDPMFeeds = false;
       machineConfiguration.setMultiAxisFeedrate(
@@ -1133,7 +1133,7 @@ function initializeSmoothing() {
           smoothing.level = smoothingSettings.finishing; // set finishing level
         }
       }
-    } else { // detemine auto smoothing level based on operation tolerance instead of stockToLeave
+    } else { // determine auto smoothing level based on operation tolerance instead of stockToLeave
       if (smoothing.tolerance >= smoothingSettings.thresholdRoughing ||
           getParameter("operation:strategy", "") == "face") {
         smoothing.level = smoothingSettings.roughing; // set roughing level
@@ -1503,7 +1503,7 @@ var UNWIND_STAY = 2; // set rotary axes origin to current position (eg G92)
 var unwindSettings = {
   method        : UNWIND_ZERO, // UNWIND_ZERO (move to closest 0 (G28)) or UNWIND_STAY (table does not move (G92))
   codes         : [gFormat.format(28), gAbsIncModal.format(91)], // formatted code(s) that will (virtually) unwind axis (G90 G28), (G92), etc.
-  workOffsetCode: "", // prefix for workoffset number if it is required to be output
+  workOffsetCode: "", // prefix for work-offset number if it is required to be output
   useAngle      : "true", // 'true' outputs angle with standard output variable, 'prefix' uses 'anglePrefix', 'false' does not output angle
   anglePrefix   : [], // optional prefixes for output angles specified as ["", "", "C"], use blank string if axis does not unwind
   resetG90      : true // set to 'true' if G90 needs to be output after the unwind block
@@ -1798,8 +1798,8 @@ function subprogramIsValid(_section, _patternId, _patternType) {
 /**
  * Sets xyz and abc output formats to incremental or absolute type
  * @param {boolean} incremental true: Sets incremental mode, false: Sets absolute mode
- * @param {Vector} xyz Linear axis values for formating
- * @param {Vector} abc Rotary axis values for formating
+ * @param {Vector} xyz Linear axis values for formatting
+ * @param {Vector} abc Rotary axis values for formatting
 */
 
 function setAbsIncMode(incremental, xyz, abc) {
@@ -1850,7 +1850,7 @@ function onSection() {
     }
   }
 
-  // toolpath starting information for live connection
+  // tool-path starting information for live connection
   if (getProperty("useLiveConnection") && (typeof liveConnectionWriteData == "function")) {
     liveConnectionWriteData("toolpathStart");
   }
@@ -2261,7 +2261,7 @@ function setProbeAngle() {
     var probeOutputWorkOffset = currentSection.probeWorkOffset;
     validate(probeOutputWorkOffset <= 6, "Angular Probing only supports work offsets 1-6.");
     if (probeVariables.probeAngleMethod == "G68" && (Vector.diff(currentSection.getGlobalInitialToolAxis(), new Vector(0, 0, 1)).length > 1e-4)) {
-      error(localize("You cannot use multi axis toolpaths while G68 Rotation is in effect."));
+      error(localize("You cannot use multi axis tool-paths while G68 Rotation is in effect."));
     }
     var validateWorkOffset = false;
     switch (probeVariables.probeAngleMethod) {
@@ -2281,7 +2281,7 @@ function setProbeAngle() {
     case "AXIS_ROT":
       var param = 5200 + probeOutputWorkOffset * 20 + probeVariables.rotationalAxis + 4;
       writeBlock("#" + param + " = " + "[#" + param + " + #194]");
-      forceWorkPlane(); // force workplane to rotate ABC in order to apply rotation offsets
+      forceWorkPlane(); // force work-plane to rotate ABC in order to apply rotation offsets
       currentWorkOffset = undefined; // force WCS output to make use of updated parameters
       validateWorkOffset = true;
       break;
@@ -3039,7 +3039,7 @@ function onCycleEnd() {
     }
     writeBlock(gFeedModeModal.format(94));
     if (currentSection.feedMode == FEED_PER_REVOLUTION) {
-      feedOutput.setFormat(feedFormat); // re-apply feedfor,mat to feedOutput
+      feedOutput.setFormat(feedFormat); // re-apply feed for,mat to feedOutput
     }
   }
   if (getProperty("useLiveConnection") && isProbeOperation() && typeof liveConnectionWriteData == "function") {
@@ -3135,7 +3135,7 @@ function onRapid5D(_x, _y, _z, _a, _b, _c) {
     ((cOutput.isEnabled() && abcFormat.areDifferent(_c, cOutput.getCurrent())) ? 1 : 0);
   /*
   if (!getProperty("useG0") && !forceG0 && (operationSupportsTCP || (num > 1))) {
-    invokeOnLinear5D(_x, _y, _z, _a, _b, _c, highFeedrate); // onLinear5D handles inverse time feedrates
+    invokeOnLinear5D(_x, _y, _z, _a, _b, _c, highFeedrate); // onLinear5D handles inverse time feed-rates
     return;
   }
   */
