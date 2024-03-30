@@ -75,7 +75,7 @@ properties = {
     description: "Enable SafetyDav3 Mode for the post processor. This will enable additional features and optimizations beyond you wildest dreams.",
     group      : "preferences",
     type       : "boolean",
-    value      : false,
+    value      : true,
     scope      : "post"
   },
   gotChipConveyor: {
