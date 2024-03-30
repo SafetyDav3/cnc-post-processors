@@ -144,7 +144,7 @@ properties = {
     description: "Enable to output notes for operations.",
     group      : "formats",
     type       : "boolean",
-    value      : false,
+    value      : true,
     scope      : "post"
   },
   useG0: {
