@@ -12,7 +12,7 @@
 description = "HAAS SR-200 3 Axis Milling Post Processor";
 vendor = "SafetyDav3 Automation";
 vendorUrl = "https://github.com/SafetyDav3";
-legal = "Copyright (C) 2024 by SafetyDav3";
+legal = "Copyright (C) 2024-2025 by SafetyDav3";
 certificationLevel = 2;
 minimumRevision = 45909;
 
@@ -48,7 +48,7 @@ properties = {
   },
   writeTools: {
     title      : "Write tool list",
-    description: "Output a tool list in the header of the code.",
+    description: "Output a tool list in the header of the code. HAAS SR-200 supports up to 10 tools.",
     group      : "formats",
     type       : "boolean",
     value      : true,
@@ -64,7 +64,7 @@ properties = {
   },
   preloadTool: {
     title      : "Preload tool",
-    description: "Preloads the next tool at a tool change (if any).",
+    description: "Preloads the next tool from ATC to the spindle.",
     group      : "preferences",
     type       : "boolean",
     value      : true,
@@ -824,7 +824,7 @@ function onOpen() {
   }
 
   if (getProperty("useG0")) {
-    writeComment(localize("Using G0 which travels along dogleg path."));
+    writeComment(localize("Using G0 for rapid traversals."));
   } else {
     writeComment(subst(localize("Using high feed G1 F%1 instead of G0."), feedFormat.format(highFeedrate)));
   }
