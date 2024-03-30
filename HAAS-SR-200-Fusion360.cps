@@ -157,7 +157,7 @@ properties = {
   },
   useG0: {
     title      : "Use G0",
-    description: "Specifies that G0s should be used for rapid moves when moving along a single axis.",
+    description: "Specifies that G0s should be used for rapid moves when moving along a single axis. Haas uses G0 for all moves by default.",
     group      : "preferences",
     type       : "boolean",
     value      : true,
